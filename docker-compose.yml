@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  datalog-restapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: datalog-restapi
+    restart: always
+    volumes:
+      - ./src:/app/src
+      - node_modules:/usr/src/app/node_modules
+    ports:
+      - 3999:3999
+    networks:
+      - datalog-restapi-network
+
+networks:
+  datalog-restapi-network:
+
+volumes:
+  node_modules:
+  datalog-restapi-volumes:
