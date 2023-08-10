@@ -4,5 +4,5 @@ COPY package.json .
 RUN npm install --production --silent
 COPY . /usr/src/app
 EXPOSE 3999
-RUN npm run build
+RUN npx tsc --init
 CMD ["node", "./dist/index.js"]
