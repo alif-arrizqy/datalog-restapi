@@ -21,6 +21,12 @@ export const aptOldRouter = (router: express.Router) => {
           errors: errors.array(),
         });
       }
+      if (req.body.startDate > req.body.endDate) {
+        return res.status(422).json({
+          message: "error",
+          error: "startDate must be less than endDate",
+        });
+      }
       aptOld(req, res);
     }
   );

@@ -1,7 +1,7 @@
 import express from "express";
 import { aptNew } from "../controllers/aptNewController";
 import { body, validationResult } from "express-validator";
-
+import { error } from "console";
 
 export const aptNewRouter = (router: express.Router) => {
   // router.post("/aptNew", aptNew);
@@ -20,6 +20,12 @@ export const aptNewRouter = (router: express.Router) => {
       if (!errors.isEmpty()) {
         return res.status(422).json({
           errors: errors.array(),
+        });
+      }
+      if (req.body.startDate > req.body.endDate) {
+        return res.status(422).json({
+          message: "error",
+          error: "startDate must be less than endDate",
         });
       }
       aptNew(req, res);
