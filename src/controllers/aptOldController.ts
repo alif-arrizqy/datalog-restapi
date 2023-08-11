@@ -117,7 +117,7 @@ const aptOld = (req: Request, res: Response) => {
               variable.minBatteryVoltage,
               variable.maxBatteryVoltage
             ),
-            time_local: `${year}-${monthString}-${date} ${hour}:${minute}:${
+            time_local: `${year}-${monthString}-${date} ${hour}:${minute}:0${
               Math.floor(Math.random() * (3 - 0 + 1)) + 0
             }`,
             nojs: nojs,

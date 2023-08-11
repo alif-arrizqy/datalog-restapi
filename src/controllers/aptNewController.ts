@@ -45,8 +45,8 @@ const aptNew = (req: Request, res: Response) => {
       for (const hour of hourGen) {
         for (const minute of minuteGen) {
           const objDatas: AptNewJson = {
-            ts: `${year}${monthString}${date}T${hour}${minute}${
-              Math.floor(Math.random() * (3 - 0 + 1)) + 0
+            ts: `${year}${monthString}${date}T${hour}${minute}0${
+              Math.floor(Math.random() * (5 - 0)) + 0
             }+0700`,
             cpu_temp: parseFloat(
               randomDecimal(variable.minCpuTemp, variable.maxCpuTemp)
@@ -77,7 +77,10 @@ const aptNew = (req: Request, res: Response) => {
             pv1_curr: parseFloat(
               randomDecimal(variable.minPvCurrent, variable.maxPvCurrent)
             ),
-            eh2: randomInteger(variable.minEnergyHarvest1, variable.maxEnergyHarvest2),
+            eh2: randomInteger(
+              variable.minEnergyHarvest1,
+              variable.maxEnergyHarvest2
+            ),
             pv2_volt: parseFloat(
               `${randomDecimal(variable.minPvVoltage, variable.maxPvVoltage)}`
             ),
